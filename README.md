@@ -14,7 +14,7 @@ A plugin for [NetBox](https://github.com/netbox-community/netbox) to work with r
 
 Preview.
 > Collect devices data:
-> ![collect devices data](static/collection.gif) 
+> ![collect devices data](static/collection.gif)
 
 > Templates compliance
 > ![templates compliance](static/templates.gif)
@@ -79,7 +79,7 @@ services:
       - GIT_COMMITTER_NAME=netbox
       - GIT_COMMITTER_EMAIL=netbox@example.com
     # user: '101' <---   Comment this. I don't know how to make ssh work with this line as for now.
-    volumes:        
+    volumes:
     #...add this volume:...
       - ./device_configs:/device_configs:z
     ports:
@@ -156,7 +156,7 @@ After plugin is installed, additional menu "Plugin" will appear in top navi pane
 For templates compliance feature you need to follow this three-step scenario:
 
 - Step1. Add template (e.g. for particular section)
-- Step2. Add a service. Inside service, add service rules, that will match template for particular device roles and device types. 
+- Step2. Add a service. Inside service, add service rules, that will match template for particular device roles and device types.
 - Step3. Attach service to devices.
 
 ![compliance_list](static/compliance_list.png)
@@ -165,7 +165,7 @@ All matched templates will be merged into one big-boss template, which will be c
 
 ## Schedule config collection
 
-If you want to schedule global collection from all devices (e.g. every night at 3 a.m, like all cron-users do.) - you could use API. Just add this line to cron: 
+If you want to schedule global collection from all devices (e.g. every night at 3 a.m, like all cron-users do.) - you could use API. Just add this line to cron:
 
 ```shell
 curl --location --request POST 'http://NETBOX_IP:8080/api/plugins/config_officer/collection/' --header 'Authorization: Token YOUR_TOKEN' --form 'task="global_collection"'
