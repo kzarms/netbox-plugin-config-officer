@@ -1,0 +1,12 @@
+[flake8]
+ignore =
+    # Found too high function cognitive complexity
+    WPS231,
+    # Found too high module cognitive complexity
+    WPS232,
+    # Missing parameter(s) in Docstring
+    DAR101,
+    # Missing "Returns" in Docstring
+    DAR201,
+    # Found too short name. It is OK to have "for i in range(5):"
+    WPS111

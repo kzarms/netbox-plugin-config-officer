@@ -6,20 +6,15 @@ import diffios
 
 
 def get_lines_in_section(config, section):
-    """Get lines (i.e ip address x.x.x.x) under the section's name.
-
-    i.e. interface GigabitEthernet0
-
-    # noqa: DAR201
-    # noqa: DAR101
-
-    """
+    """Get lines (i.e ip address x.x.x.x) under the section's name."""
     output = []
     if section in config:
         if config.index(section) == len(config):
             return []
 
-        for i in range(config.index(section) + 1, len(config)):  # noqa: WPS111,WPS518,E501
+        for i in range(config.index(section) + 1, len(config)):  # noqa: WPS518
+            # Fix in future
+            # https://github.com/wemake-services/wemake-python-styleguide/issues/863
             line = config[i]
             if re.search(r'^ ', line):
                 output.append(line)
@@ -33,12 +28,7 @@ def get_lines_in_section(config, section):
 
 
 def is_section(config, line):
-    """Def ines if this line - is section's name interface GigabitEthernet 0.
-
-    # noqa: DAR201
-    # noqa: DAR101
-
-    """
+    """Def ines if this line is section's name interface GigabitEthernet 0."""
     if config.index(line) + 1 == len(config):
         return False
     if re.match(r'^ ', line):
@@ -50,12 +40,7 @@ def is_section(config, line):
 
 
 def merge_configs(config1, config2):
-    """Merge to config with the same sections.
-
-    # noqa: DAR201
-    # noqa: DAR101
-
-    """
+    """Merge to config with the same sections."""
     output = []
 
     if config1:
@@ -64,6 +49,7 @@ def merge_configs(config1, config2):
             if line in config2:
                 if is_section(config1, line):
                     for conf2_line in get_lines_in_section(config2, line):
+                        # Fix in future. To many complexity
                         output.append(conf2_line)  # noqa: WPS220
         output.append('!')
     if config2:
@@ -75,12 +61,7 @@ def merge_configs(config1, config2):
 
 
 def get_config_diff(template, config, ignore=None):
-    """Get inconsistency between device running config and template.
-
-    # noqa: DAR201
-    # noqa: DAR101
-
-    """
+    """Get inconsistency between device running config and template."""
     if not ignore:
         ignore = [
             'Building configuration',
@@ -96,13 +77,7 @@ def get_config_diff(template, config, ignore=None):
 
 
 def generate_templates_config_for_device(templates):
-    """
-    Merge config from matched templates and changes due to vars.
-
-    # noqa: DAR201
-    # noqa: DAR101
-
-    """
+    """Merge config from matched templates and changes due to vars."""
     config = []
     for template in templates:
         config = merge_configs(config, template.configuration.splitlines())
