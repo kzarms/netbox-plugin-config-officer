@@ -1,4 +1,5 @@
 # Config Officer - NetBox plugin
+[![Python package](https://github.com/kzarms/netbox-plugin-config-officer/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/kzarms/netbox-plugin-config-officer/actions/workflows/pipeline.yml)
 
 NetBox plugin that deals with Cisco device configuration (collects running config from Cisco devices, indicates config changes and checks templates compliance).
 
