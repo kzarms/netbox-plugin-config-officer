@@ -37,4 +37,4 @@ jobs:
         flake8 config_officer/config_manager.py --count --show-source --statistics
     #- name: Test with pytest
     #  run: |
-        pytest
+    #    pytest
